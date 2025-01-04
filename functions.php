@@ -1,7 +1,5 @@
 <?php
 
-
-
 /* This block of code in PHP is defining a function `dsmb_theme_setup_and_support` that sets up various
 theme supports for a WordPress theme. */
 
@@ -13,20 +11,85 @@ if (!function_exists('dsmb_theme_setup_and_support')) {
         add_theme_support('post-thumbnails', ['post']);
         add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption']);
         add_theme_support('post-formats', ['aside', 'image', 'video', 'quote', 'link', 'gallery', 'audio']);
+
+        register_nav_menus([
+            'nav_menu' => __('Main menu', 'dsmb'),
+            'top_menu'  => __( 'Top Menu', 'dsmb' ),
+
+        ]);
     }
 }
 
 add_action('after_setup_theme', 'dsmb_theme_setup_and_support');
 
+//nav menu adjustment
 
-if(!function_exists('dsmb_enqueue_scripts')){
+if (!function_exists('dsmb_nav_submenu_css_class')) {
+    function dsmb_nav_submenu_css_class($classes, $args, $depth)
+    {
+        if($args->theme_location = 'nav_menu'){
+            if (in_array('sub-menu', $classes)) {
+                $classes[] = 'dropdown';
+            }
+        }
+        
+
+        return $classes;
+    }
+}
+add_filter('nav_menu_submenu_css_class', 'dsmb_nav_submenu_css_class', 10, 3);
+
+
+//nav menu icon fixed
+
+if(!function_exists('dsmb_sub_menu_icon')){
+    function dsmb_sub_menu_icon($items, $args)
+    {
+        foreach($items as $item){
+            if(in_array('menu-item-has-children', $item->classes)){
+                $item->title .= '<i class="icofont-rounded-down"></i>';
+            }
+        }
+
+        return $items;
+    }
+}
+add_filter('wp_nav_menu_objects', 'dsmb_sub_menu_icon', 10, 2);
+
+//nav menu active class fixed
+if(!function_exists('dsmb_nav_menu_active_calss')){
+    
+    function dsmb_nav_menu_active_calss($classes, $item, $args, $depth) {
+        if($args->theme_location === 'nav_menu'){
+            if (in_array('current-menu-item', $classes) || in_array('current-menu-ancestor', $classes)) {
+                $classes[] = 'active';
+            }
+
+            if ($item->url === home_url('/') && is_front_page()) {
+                $classes[] = 'active';
+            } else if ($item->url === home_url('/')) {
+                $classes = array_diff($classes, ['active']);
+            }
+        }
+
+        return array_unique($classes);
+    }
+}
+
+add_filter('nav_menu_css_class', 'dsmb_nav_menu_active_calss', 10, 4);
+
+
+
+
+
+if (!function_exists('dsmb_enqueue_scripts')) {
     function dsmb_enqueue_scripts()
     {
         $version = wp_get_theme()->get('Version');
 
         /*
-            Enqueue the all styles
-        */
+        Enqueue the all styles
+         */
 
         //Bootstrap CSS
         wp_enqueue_style('dsmb-bootstrap', get_theme_file_uri('assets/css/bootstrap.min.css'), [], $version, 'all');
@@ -47,10 +110,9 @@ if(!function_exists('dsmb_enqueue_scripts')){
         //Magnific Popup CSS
         wp_enqueue_style('dsmb-magnific', get_theme_file_uri('assets/css/magnific-popup.css'), [], $version, 'all');
 
-
         /*
-            Doctors Seba Mediplusbd Styles
-        */
+        Doctors Seba Mediplusbd Styles
+         */
 
         //Normalize CSS
         wp_enqueue_style('dsmb-normalize', get_theme_file_uri('assets/css/normalize.css'), [], $version, 'all');
@@ -63,11 +125,9 @@ if(!function_exists('dsmb_enqueue_scripts')){
         //Theme main style
         wp_enqueue_style('dsmb-main', get_stylesheet_uri());
 
-
-
         /*
-            Enqueue the all Scripts
-        */
+        Enqueue the all Scripts
+         */
 
         //query Min JS
         wp_enqueue_script('dsmb-jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', [], $version, true);
@@ -109,18 +169,7 @@ if(!function_exists('dsmb_enqueue_scripts')){
         wp_enqueue_script('dsmb-bootstrap-js', get_theme_file_uri('assets/js/bootstrap.min.js'), [], $version, true);
         //Bootstrap JS
         wp_enqueue_script('dsmb-main-js', get_theme_file_uri('assets/js/main.js'), ['dsmb-jquery'], $version, true);
-
-
-
-
-
-
     }
-
-
-        
-
-
 }
 
 add_action('wp_enqueue_scripts', 'dsmb_enqueue_scripts');
