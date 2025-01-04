@@ -85,5 +85,6 @@
 			<!--/ End Copyright -->
 		</footer>
 		<!--/ End Footer Area -->
+		<?php wp_footer(); ?>
     </body>
 </html>
