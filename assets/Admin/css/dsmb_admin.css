@@ -1,0 +1,27 @@
+.dsmb_appointment_button {
+    display: inline-block;
+    width: 48%; /* Adjust width as needed */
+    margin-right: 2%; /* Add spacing between fields */
+}
+
+.dsmb_appointment_button:last-child {
+    margin-right: 0;
+}
+
+
+.dsmb_other_button {
+    display: inline-block;
+    width: 48%; /* Adjust width as needed */
+    margin-right: 2%; /* Add spacing between fields */
+}
+
+.dsmb_other_button:last-child {
+    margin-right: 0;
+}
+
+#publishing-action #publish {
+    background-color: #fb8500;
+    border: 0;
+    padding: 5px 25px;
+    font-size: 16px;
+}

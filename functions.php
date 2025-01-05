@@ -1,5 +1,14 @@
 <?php
 
+//Register custom post type slider
+require_once get_theme_file_path('inc/Slider-CPT/slider-CPT.php');
+
+//Add slider custom fields
+require_once get_theme_file_path('inc/Slider-CPT/slider_custom-fields.php');
+
+//Included cmb2 library
+require_once get_theme_file_path('lib/CMB2/init.php');
+
 /* This block of code in PHP is defining a function `dsmb_theme_setup_and_support` that sets up various
 theme supports for a WordPress theme. */
 
@@ -8,13 +17,13 @@ if (!function_exists('dsmb_theme_setup_and_support')) {
     {
         load_theme_textdomain('dsmb');
         add_theme_support('title-tag');
-        add_theme_support('post-thumbnails', ['post']);
+        add_theme_support('post-thumbnails', ['post', 'slider']);
         add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption']);
         add_theme_support('post-formats', ['aside', 'image', 'video', 'quote', 'link', 'gallery', 'audio']);
 
         register_nav_menus([
             'nav_menu' => __('Main menu', 'dsmb'),
-            'top_menu'  => __( 'Top Menu', 'dsmb' ),
+            'top_menu' => __('Top Menu', 'dsmb'),
 
         ]);
     }
@@ -22,31 +31,27 @@ if (!function_exists('dsmb_theme_setup_and_support')) {
 
 add_action('after_setup_theme', 'dsmb_theme_setup_and_support');
 
-//nav menu adjustment
-
+//nav menu submenu
 if (!function_exists('dsmb_nav_submenu_css_class')) {
     function dsmb_nav_submenu_css_class($classes, $args, $depth)
     {
-        if($args->theme_location = 'nav_menu'){
+        if ($args->theme_location = 'nav_menu') {
             if (in_array('sub-menu', $classes)) {
                 $classes[] = 'dropdown';
             }
         }
-        
-
         return $classes;
     }
 }
 add_filter('nav_menu_submenu_css_class', 'dsmb_nav_submenu_css_class', 10, 3);
 
 
-//nav menu icon fixed
-
-if(!function_exists('dsmb_sub_menu_icon')){
+//nav sub menu icon fixed
+if (!function_exists('dsmb_sub_menu_icon')) {
     function dsmb_sub_menu_icon($items, $args)
     {
-        foreach($items as $item){
-            if(in_array('menu-item-has-children', $item->classes)){
+        foreach ($items as $item) {
+            if (in_array('menu-item-has-children', $item->classes)) {
                 $item->title .= '<i class="icofont-rounded-down"></i>';
             }
         }
@@ -56,11 +61,14 @@ if(!function_exists('dsmb_sub_menu_icon')){
 }
 add_filter('wp_nav_menu_objects', 'dsmb_sub_menu_icon', 10, 2);
 
+
+
 //nav menu active class fixed
-if(!function_exists('dsmb_nav_menu_active_calss')){
-    
-    function dsmb_nav_menu_active_calss($classes, $item, $args, $depth) {
-        if($args->theme_location === 'nav_menu'){
+if (!function_exists('dsmb_nav_menu_active_calss')) {
+
+    function dsmb_nav_menu_active_calss($classes, $item, $args, $depth)
+    {
+        if ($args->theme_location === 'nav_menu') {
             if (in_array('current-menu-item', $classes) || in_array('current-menu-ancestor', $classes)) {
                 $classes[] = 'active';
             }
@@ -80,8 +88,10 @@ add_filter('nav_menu_css_class', 'dsmb_nav_menu_active_calss', 10, 4);
 
 
 
-
-
+/* 
+    The below PHP code is defining a function `dsmb_enqueue_scripts` that is responsible for enqueueing
+    various stylesheets and scripts in a WordPress theme. 
+*/
 if (!function_exists('dsmb_enqueue_scripts')) {
     function dsmb_enqueue_scripts()
     {
@@ -173,3 +183,25 @@ if (!function_exists('dsmb_enqueue_scripts')) {
 }
 
 add_action('wp_enqueue_scripts', 'dsmb_enqueue_scripts');
+
+//admin scripts enqueque
+
+/* 
+    The code block you provided is defining a function `dsmb_admin_enqueque` that is responsible for
+    enqueueing stylesheets and scripts specifically for the WordPress admin area. 
+*/
+if (!function_exists('dsmb_admin_enqueque')) {
+    function dsmb_admin_enqueque()
+    {
+        $version = wp_get_theme()->get('Version');
+        //css enqueue
+        wp_enqueue_style('dsmb-admin-css', get_theme_file_uri('assets/Admin/css/dsmb_admin.css'), [], time(), 'all');
+
+        //js enqueue
+        wp_enqueue_script('dsmb-admin-js', get_theme_file_uri('assets/Admin/js/dsmb_admin.js'), [], time(), true);
+
+    }
+
+}
+
+add_action('admin_enqueue_scripts', 'dsmb_admin_enqueque');

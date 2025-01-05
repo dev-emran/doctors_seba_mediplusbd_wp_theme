@@ -1,6 +1,5 @@
 
 <?php get_header();?>
-<?php wp_head();?>
 		<!-- Slider Area -->
 			<?php get_template_part('template-parts/Homepage/Slider'); ?>
 		<!--/ End Slider Area -->
@@ -57,4 +56,3 @@
 
 		<!-- Start Footer Area -->
 		 <?php get_footer();?>
-		 <?php wp_footer();?>
