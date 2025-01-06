@@ -1,13 +1,40 @@
 <?php
 
+//Custom functions
+require_once get_theme_file_path('inc/custom-functions.php');
+
 //Register custom post type slider
 require_once get_theme_file_path('inc/Slider-CPT/slider-CPT.php');
-
 //Add slider custom fields
 require_once get_theme_file_path('inc/Slider-CPT/slider_custom-fields.php');
 
+//Register custom post type Schedule
+require_once get_theme_file_path('inc/Schedule-CPT/schedule-cpt.php');
+//Add Schedule custom fields
+require_once get_theme_file_path('inc/Schedule-CPT/schedule_custom-fields.php');
+
+
+//Register custom post type Features
+require_once get_theme_file_path('inc/Features/features-cpt.php');
+//Add Schedule custom fields
+require_once get_theme_file_path('inc/Features/features_custom-fields.php');
+
+
+//Register custom post type Features
+require_once get_theme_file_path('inc/Fun-facts/funfacts-cpt.php');
+//Add Schedule custom fields
+require_once get_theme_file_path('inc/Fun-facts/funfacts_custom-fields.php');
+
+
+
+
+
 //Included cmb2 library
 require_once get_theme_file_path('lib/CMB2/init.php');
+
+//Codestar framework
+require_once get_theme_file_path('lib/Codestar/codestar-framework.php');
+require_once get_theme_file_path('inc/Codestar/theme-options.php');
 
 /* This block of code in PHP is defining a function `dsmb_theme_setup_and_support` that sets up various
 theme supports for a WordPress theme. */
@@ -45,7 +72,6 @@ if (!function_exists('dsmb_nav_submenu_css_class')) {
 }
 add_filter('nav_menu_submenu_css_class', 'dsmb_nav_submenu_css_class', 10, 3);
 
-
 //nav sub menu icon fixed
 if (!function_exists('dsmb_sub_menu_icon')) {
     function dsmb_sub_menu_icon($items, $args)
@@ -60,8 +86,6 @@ if (!function_exists('dsmb_sub_menu_icon')) {
     }
 }
 add_filter('wp_nav_menu_objects', 'dsmb_sub_menu_icon', 10, 2);
-
-
 
 //nav menu active class fixed
 if (!function_exists('dsmb_nav_menu_active_calss')) {
@@ -86,16 +110,15 @@ if (!function_exists('dsmb_nav_menu_active_calss')) {
 
 add_filter('nav_menu_css_class', 'dsmb_nav_menu_active_calss', 10, 4);
 
-
-
-/* 
-    The below PHP code is defining a function `dsmb_enqueue_scripts` that is responsible for enqueueing
-    various stylesheets and scripts in a WordPress theme. 
-*/
+/*
+The below PHP code is defining a function `dsmb_enqueue_scripts` that is responsible for enqueueing
+various stylesheets and scripts in a WordPress theme.
+ */
 if (!function_exists('dsmb_enqueue_scripts')) {
     function dsmb_enqueue_scripts()
     {
-        $version = wp_get_theme()->get('Version');
+        // $version = wp_get_theme()->get('Version');
+        $version = time();
 
         /*
         Enqueue the all styles
@@ -186,10 +209,10 @@ add_action('wp_enqueue_scripts', 'dsmb_enqueue_scripts');
 
 //admin scripts enqueque
 
-/* 
-    The code block you provided is defining a function `dsmb_admin_enqueque` that is responsible for
-    enqueueing stylesheets and scripts specifically for the WordPress admin area. 
-*/
+/*
+The code block you provided is defining a function `dsmb_admin_enqueque` that is responsible for
+enqueueing stylesheets and scripts specifically for the WordPress admin area.
+ */
 if (!function_exists('dsmb_admin_enqueque')) {
     function dsmb_admin_enqueque()
     {

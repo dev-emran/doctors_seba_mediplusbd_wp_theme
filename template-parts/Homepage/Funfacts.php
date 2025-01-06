@@ -1,50 +1,46 @@
-<div id="fun-facts" class="fun-facts section overlay">
-			<div class="container">
-				<div class="row">
+<?php
+$dsmb_funfacts_bg = get_option('dsmb_theme_options');
+$dsmb_funfacts = new WP_Query([
+	'post_type' => 'fun_fact',
+	'posts_per_page' => 4,
+	'orderby' => 'date',
+	'order' => 'DESC',
+
+]);
+?>
+<div id="fun-facts" class="fun-facts section overlay"
+	style="background:url(<?php echo esc_url($dsmb_funfacts_bg['fun_facts_section']); ?>);">
+	<div class="container">
+		<div class="row">
+			<?php
+			if ($dsmb_funfacts->have_posts()):
+				while ($dsmb_funfacts->have_posts()):
+					$dsmb_funfacts->the_post();
+					$dsmb_numbers = get_post_meta(get_the_ID(), '_dsmb_how_many_numbers', true);
+					$dsmb_fun_icon = get_post_meta(get_the_ID(), '_dsmb_feature_icon', true);
+					?>
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Start Single Fun -->
 						<div class="single-fun">
-							<i class="icofont icofont-home"></i>
+							<i class="<?php echo esc_attr($dsmb_fun_icon); ?>"></i>
 							<div class="content">
-								<span class="counter">3468</span>
-								<p>Hospital Rooms</p>
+								<div class="d-flex">
+									<span class="counter"><?php echo esc_html($dsmb_numbers); ?></span><span>+</span>
+								</div>
+								<p><?php the_title(); ?></p>
 							</div>
 						</div>
 						<!-- End Single Fun -->
 					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont icofont-user-alt-3"></i>
-							<div class="content">
-								<span class="counter">557</span>
-								<p>Specialist Doctors</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont-simple-smile"></i>
-							<div class="content">
-								<span class="counter">4379</span>
-								<p>Happy Patients</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-					<div class="col-lg-3 col-md-6 col-12">
-						<!-- Start Single Fun -->
-						<div class="single-fun">
-							<i class="icofont icofont-table"></i>
-							<div class="content">
-								<span class="counter">32</span>
-								<p>Years of Experience</p>
-							</div>
-						</div>
-						<!-- End Single Fun -->
-					</div>
-				</div>
-			</div>
+					<?php
+				endwhile;
+				wp_reset_postdata();
+			else:
+				?>
+				<h4 class="text-center text-white z-3 position-absolute top-50 start-50 translate-middle">No func facts item founds! please create first</h4>
+				<?php
+			endif;
+			?>
 		</div>
+	</div>
+</div>

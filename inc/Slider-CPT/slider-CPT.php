@@ -23,7 +23,7 @@ if(!function_exists('dsmb_create_slider_cpt')){
 			'search_items' => __( 'Search Slider', 'dsmb' ),
 			'not_found' => __( 'Sliders Not found', 'dsmb' ),
 			'not_found_in_trash' => __( 'Sliders Not found in Trash', 'dsmb' ),
-			'featured_image' => __( 'Slider Image', 'dsmb' ),
+			'featured_image' => __( 'Slider Image(1600X830)', 'dsmb' ),
 			'set_featured_image' => __( 'Set Slider image', 'dsmb' ),
 			'remove_featured_image' => __( 'Remove Slider image', 'dsmb' ),
 			'use_featured_image' => __( 'Use as Slider image', 'dsmb' ),
