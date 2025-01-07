@@ -49,9 +49,13 @@
 				<div class="inner">
 					<div class="row">
 						<div class="col-lg-3 col-md-3 col-12">
+							<?php 
+								$dsmb_get_options = get_option('dsmb_theme_options');
+								$site_logo = $dsmb_get_options['dsmb_main_logo'];
+							?>
 							<!-- Start Logo -->
 							<div class="logo">
-								<a href="<?php site_url(); ?>"><img src="<?php echo get_template_directory_uri() . '/assets/img/logo.png' ?>" alt="#"></a>
+								<a href="<?php site_url(); ?>"><img src="<?php echo $site_logo['url'] ? esc_url($site_logo['url']) : esc_url(get_template_directory_uri() . '/assets/img/logo.png') ?>" alt="<?php echo $site_logo['title'] ? esc_url($site_logo['title']) : '' ?>"></a>
 							</div>
 							<!-- End Logo -->
 							<!-- Mobile Nav -->

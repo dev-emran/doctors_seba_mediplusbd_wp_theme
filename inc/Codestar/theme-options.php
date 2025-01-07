@@ -10,6 +10,23 @@ CSF::createOptions($prefix, array(
     'theme' => 'light',
 ));
 
+
+//Site logo
+CSF::createSection($prefix, array(
+    'title' => __('Site Logo', 'dsmb'),
+    'icon' => 'fa fa-wpexplorer',
+    'fields' => array(
+        array(
+            'id' => 'dsmb_main_logo',
+            'type' => 'media',
+            'library' => 'image',
+            'title' => __('Select Logo', 'dsmb'),
+            'preview' => 'true',
+            'desc' => 'For better view(178 by 37 pixels)',
+        ),
+  
+    ),
+));
 //contact section
 CSF::createSection($prefix, array(
     'title' => __('Contact', 'dsmb'),
@@ -378,7 +395,7 @@ CSF::createSection($prefix, array(
 //Price head section
 CSF::createSection($prefix, array(
     'title' => 'Head Section',
-    'icon' => 'fa fa-header',
+    'icon' => 'fa fa-h-square',
     'id' => 'price_head_section',
     'parent' => 'price_section',
     'fields' => [

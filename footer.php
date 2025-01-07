@@ -75,8 +75,18 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
+							<?php 
+								$dsmb_options = get_option('dsmb_theme_options');
+								$copyrights_text = $dsmb_options['copy_right'] ? $dsmb_options['copy_right'] : 'All Rights Reserved by';
+								$dev_name = $dsmb_options['dev_name'] ? $dsmb_options['dev_name'] : 'Emran';
+								$dev_url = $dsmb_options['dev_url'] ? $dsmb_options['dev_url'] : 'https://fb.me/pcbnll';
+								$get_current_year = date('Y');
+							
+							?>
 							<div class="copyright-content">
-								<p>© Copyright 2018  |  All Rights Reserved by <a href="https://www.wpthemesgrid.com" target="_blank">wpthemesgrid.com</a> </p>
+								<?php  
+									printf("<p>%s %s | %s <a href='%s' target='_blank'>%s</a></p>", '&copy', $get_current_year, $copyrights_text, $dev_url, $dev_name );
+								?>
 							</div>
 						</div>
 					</div>
