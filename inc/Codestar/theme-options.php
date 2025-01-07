@@ -291,7 +291,8 @@ CSF::createSection($prefix, [
             'placeholder' => 'Enter button two url',
         ],
 
-        ['id' => 'cta_section_bg',
+        [
+            'id' => 'cta_section_bg',
             'type' => 'media',
             'library' => 'image',
             'title' => __('Background Image', 'dsmb'),
@@ -433,7 +434,7 @@ CSF::createSection($prefix, array(
                     'desc' => __('Just <a href="https://icofont.com/" target="_blank">go there</a> and copy the icon class name only', 'dsmb'),
                     'placeholder' => 'Icofont class name',
                 ],
-                
+
                 [
                     'id' => 'package_price',
                     'title' => __('Package Price', 'dsmb'),
@@ -476,4 +477,78 @@ CSF::createSection($prefix, array(
             ],
         ],
     ],
+));
+
+//Blog section
+CSF::createSection($prefix, array(
+    'title' => 'Blog Section',
+    'icon' => 'fa fa-check-circle',
+    'fields' => array(
+        array(
+            'id' => 'blog_sec_title',
+            'type' => 'text',
+            'title' => __('Title', 'dsmb'),
+            'desc' => __('Blog section title(within 15 words)', 'dsmb'),
+            'placeholder' => 'Enter Blog section title',
+        ),
+
+        array(
+            'id' => 'blog_desc',
+            'type' => 'textarea',
+            'title' => __('Blog Short Desc', 'dsmb'),
+            'placeholder' => 'Enter blog section short desc',
+        ),
+
+        array(
+            'id' => 'blog_sec_icon',
+            'type' => 'media',
+            'library' => 'image',
+            'title' => __('Image PNG', 'dsmb'),
+            'preview' => 'true',
+            'desc' => 'For better view(48 by 24 pixels)',
+
+        ),
+
+    ),
+));
+
+//Clients section
+CSF::createSection($prefix, array(
+    'title' => 'Clients Section',
+    'icon' => 'fa fa-user',
+    'fields' => array(
+        [
+            'id' => 'client_sec_bg',
+            'type' => 'media',
+            'library' => 'image',
+            'title' => __('Background Image', 'dsmb'),
+            'desc' => __('For better view (1600 by 283 pixels)'),
+            'preview' => 'true',
+        ],
+
+        [
+            'id' => 'client_info',
+            'title' => __('Client information', 'dsmb'),
+            'type' => 'group',
+            'fields' => [
+                [
+                    'id' => 'client_company_name',
+                    'title' => __('Client Company Name', 'dsmb'),
+                    'type' => 'text',
+                    'placeholder' => 'Company name',
+                ],
+
+                [
+                    'id' => 'client_co_logo',
+                    'type' => 'media',
+                    'library' => 'image',
+                    'title' => __('Company Logo', 'dsmb'),
+                    'desc' => __('For better view (200 by 70 pixels)'),
+                    'preview' => 'true',
+                ],
+            ],
+
+        ],
+
+    ),
 ));
