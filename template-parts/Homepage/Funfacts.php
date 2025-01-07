@@ -36,9 +36,7 @@ $dsmb_funfacts = new WP_Query([
 				endwhile;
 				wp_reset_postdata();
 			else:
-				?>
-				<h4 class="text-center text-white z-3 position-absolute top-50 start-50 translate-middle">No func facts item founds! please create first</h4>
-				<?php
+				printf( "<h4 class='text-center text-dark'>%s</h4>", esc_html('No func facts item founds! please create first'));
 			endif;
 			?>
 		</div>

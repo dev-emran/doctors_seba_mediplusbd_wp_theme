@@ -77,7 +77,7 @@ CSF::createSection($prefix, array(
     'fields' => array(
         array(
             'id' => 'features_title',
-            'type' => 'textarea',
+            'type' => 'text',
             'title' => __('Title', 'dsmb'),
             'desc' => __('feature section title(within 10 words)', 'dsmb'),
             'placeholder' => 'Enter features title',
@@ -85,7 +85,7 @@ CSF::createSection($prefix, array(
 
         array(
             'id' => 'features_desc',
-            'type' => 'text',
+            'type' => 'textarea',
             'title' => __('Features Short Desc', 'dsmb'),
             'placeholder' => 'Enter features short desc',
         ),
@@ -129,6 +129,7 @@ CSF::createSection($prefix, array(
 
 ));
 
+//sub menu
 CSF::createSection($prefix, array(
     'title' => 'Header Section',
     'icon' => 'fa fa-header',
@@ -164,6 +165,7 @@ CSF::createSection($prefix, array(
     ),
 ));
 
+//sub menu
 CSF::createSection($prefix, array(
     'title' => 'Main Section',
     'icon' => 'fa fa-home',
@@ -220,7 +222,7 @@ CSF::createSection($prefix, array(
             'type' => 'media',
             'library' => 'image',
             'title' => __('Video Background Image', 'dsmb'),
-            'desc'  => __('For better view (2560 by 1200 pixels)'),
+            'desc' => __('For better view (2560 by 1200 pixels)'),
             'preview' => 'true',
         ),
 
@@ -229,11 +231,249 @@ CSF::createSection($prefix, array(
             'type' => 'text',
             'title' => __('Video Url', 'dsmb'),
             'placeholder' => 'Enter Video Url',
-            'desc'  => 'Past youtube video url',
-            'attributes'    => [
-                'required'  => 'required',
+            'desc' => 'Past youtube video url',
+            'attributes' => [
+                'required' => 'required',
             ],
         ),
 
     ),
+));
+
+//Call to action section
+CSF::createSection($prefix, [
+    'id' => 'call_to_action_section',
+    'title' => __('Call To Action', 'dsmb'),
+    'icon' => 'fa fa-shield',
+    'fields' => [
+
+        [
+            'id' => 'cta_title',
+            'type' => 'text',
+            'title' => __('Title', 'dsmb'),
+            'desc' => __('Please title use within 15 words'),
+            'placeholder' => 'Enter title',
+        ],
+
+        [
+            'id' => 'cta_short_desc',
+            'type' => 'textarea',
+            'title' => __('Short Desc', 'dsmb'),
+            'desc' => __('Please title use within 30 words'),
+            'placeholder' => 'Enter short description',
+        ],
+
+        [
+            'id' => 'cta_button_one_text',
+            'type' => 'text',
+            'title' => __('Button One Text', 'dsmb'),
+            'placeholder' => 'Enter button one text',
+        ],
+
+        [
+            'id' => 'cta_button_one_url',
+            'type' => 'text',
+            'title' => __('Button One Url', 'dsmb'),
+            'placeholder' => 'Enter button one url',
+        ],
+
+        [
+            'id' => 'cta_button_two_text',
+            'type' => 'text',
+            'title' => __('Button Two Text', 'dsmb'),
+            'placeholder' => 'Enter button two text',
+        ],
+
+        [
+            'id' => 'cta_button_two_url',
+            'type' => 'text',
+            'title' => __('Button Two Url', 'dsmb'),
+            'placeholder' => 'Enter button two url',
+        ],
+
+        ['id' => 'cta_section_bg',
+            'type' => 'media',
+            'library' => 'image',
+            'title' => __('Background Image', 'dsmb'),
+            'desc' => __('For better view (2560 by 1200 pixels)'),
+            'preview' => 'true',
+        ],
+    ],
+]);
+
+//Portfolio heading section
+CSF::createSection($prefix, array(
+    'title' => 'Portfolio Head',
+    'icon' => 'fa fa-folder-open',
+    'fields' => array(
+        array(
+            'id' => 'portfolio_title',
+            'type' => 'text',
+            'title' => __('Title', 'dsmb'),
+            'desc' => __('Portfolio section title(within 10 words)', 'dsmb'),
+            'placeholder' => 'Enter portfolio section title',
+        ),
+
+        array(
+            'id' => 'portfolio_desc',
+            'type' => 'textarea',
+            'title' => __('Portfolio Short Desc', 'dsmb'),
+            'placeholder' => 'Enter portfolio section short desc',
+        ),
+
+        array(
+            'id' => 'portfolio_icon',
+            'type' => 'media',
+            'library' => 'image',
+            'title' => __('Image PNG', 'dsmb'),
+            'preview' => 'true',
+            'desc' => 'For better view(48 by 24 pixels)',
+
+        ),
+
+    ),
+));
+
+//Services heading section
+CSF::createSection($prefix, array(
+    'title' => 'Services Head',
+    'icon' => 'fa fa-check',
+    'fields' => array(
+        array(
+            'id' => 'services_title',
+            'type' => 'text',
+            'title' => __('Title', 'dsmb'),
+            'desc' => __('Services section title(within 15 words)', 'dsmb'),
+            'placeholder' => 'Enter Services section title',
+        ),
+
+        array(
+            'id' => 'services_desc',
+            'type' => 'textarea',
+            'title' => __('Services Short Desc', 'dsmb'),
+            'placeholder' => 'Enter Services section short desc',
+        ),
+
+        array(
+            'id' => 'services_icon',
+            'type' => 'media',
+            'library' => 'image',
+            'title' => __('Image PNG', 'dsmb'),
+            'preview' => 'true',
+            'desc' => 'For better view(48 by 24 pixels)',
+
+        ),
+
+    ),
+));
+
+//Price Section
+CSF::createSection($prefix, array(
+    'title' => 'Pricing Table',
+    'icon' => 'fa fa-money',
+    'id' => 'price_section',
+));
+
+//Price head section
+CSF::createSection($prefix, array(
+    'title' => 'Head Section',
+    'icon' => 'fa fa-header',
+    'id' => 'price_head_section',
+    'parent' => 'price_section',
+    'fields' => [
+        [
+            'id' => 'price_title',
+            'type' => 'text',
+            'title' => __('Price Section Head Title', 'dsmb'),
+            'desc' => __('Price section title(within 15 words)', 'dsmb'),
+            'placeholder' => 'Enter Price section title',
+        ],
+        [
+            'id' => 'price_desc',
+            'type' => 'textarea',
+            'title' => __('Price Section Short Desc', 'dsmb'),
+            'placeholder' => 'Enter Price section short desc',
+        ],
+        [
+            'id' => 'price_icon',
+            'type' => 'media',
+            'library' => 'image',
+            'title' => __('Image PNG', 'dsmb'),
+            'preview' => 'true',
+            'desc' => 'For better view(48 by 24 pixels)',
+        ],
+    ],
+));
+
+//Main price section
+CSF::createSection($prefix, array(
+    'title' => __('Main Pricing Section', 'dsmb'),
+    'icon' => 'fa fa-usd',
+    'id' => 'price_head_section',
+    'parent' => 'price_section',
+    'fields' => [
+        [
+            'id' => 'pricing_table',
+            'type' => 'group',
+            'max' => 3,
+            'title' => __('Pricing Table', 'dsmb'),
+            'fields' => [
+
+                [
+                    'id' => 'package_title',
+                    'title' => __('Package Name', 'dsmb'),
+                    'type' => 'text',
+                    'placeholder' => 'Enter package name',
+                ],
+
+                [
+                    'id' => 'pricing_table_icon',
+                    'title' => __('Package Icon', 'dsmb'),
+                    'type' => 'text',
+                    'desc' => __('Just <a href="https://icofont.com/" target="_blank">go there</a> and copy the icon class name only', 'dsmb'),
+                    'placeholder' => 'Icofont class name',
+                ],
+                
+                [
+                    'id' => 'package_price',
+                    'title' => __('Package Price', 'dsmb'),
+                    'type' => 'number',
+                    'placeholder' => 'Enter package price',
+                ],
+                // Nested group for pricing item listing
+                [
+                    'id' => 'features_items',
+                    'type' => 'group',
+                    'max' => 5,
+                    'title' => __('Package Features', 'dsmb'),
+                    'fields' => [
+                        [
+                            'id' => 'features_name',
+                            'title' => __('Features Name', 'dsmb'),
+                            'type' => 'text',
+                            'placeholder' => 'Enter features name',
+                        ],
+                        [
+                            'id' => 'is_available',
+                            'title' => __('Available?', 'dsmb'),
+                            'type' => 'switcher',
+                        ],
+                    ],
+                ],
+                // [
+                //     'id' => 'pricing_table_btn_text',
+                //     'title' => __('Button Label', 'dsmb'),
+                //     'type' => 'text',
+                //     'placeholder' => 'Enter Button label',
+                // ],
+                [
+                    'id' => 'pricing_table_btn_url',
+                    'title' => __('Button URL', 'dsmb'),
+                    'type' => 'text',
+                    'validate' => 'csf_validate_url',
+                    'placeholder' => 'Enter Button URL',
+                ],
+            ],
+        ],
+    ],
 ));

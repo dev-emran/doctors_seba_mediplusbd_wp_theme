@@ -21,17 +21,7 @@
 							<div class="single-schedule first">
 								<div class="inner">
 									<div class="icon">
-										<i class="<?php
-										if($sche_icon){
-											echo esc_attr( $sche_icon);
-										}else{
-
-											echo 'fa fa-ambulance';
-										}
-										
-
-										?>
-										">
+										<i class="<?php echo $sche_icon ? esc_attr($sche_icon) : esc_attr('fa fa-ambulance');?> ">
 									</i>
 								</div>
 								<div class="single-content">

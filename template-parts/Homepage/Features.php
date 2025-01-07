@@ -3,47 +3,15 @@
 	$dsmb_options = get_option('dsmb_theme_options');
 	$dsmb_features_title = $dsmb_options['features_title'];
 	$dsmb_features_desc = $dsmb_options['features_desc'];
-	$dsmb_icon = $dsmb_options['features_icon'];
+	$dsmb_features_icon = $dsmb_options['features_icon'];
 	?>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12">
+		<div class="col-lg-12">
 				<div class="section-title">
-					<?php
-					if ($dsmb_features_title):
-						?>
-						<h2><?php echo esc_html($dsmb_features_title); ?></h2>
-						<?php
-					else:
-						?>
-						<h2>We Are Always Ready to Help You & Your Family</h2>
-						<?php
-					endif;
-					?>
-
-					<img src="
-					<?php
-					if ($dsmb_icon['url']) {
-						echo esc_attr($dsmb_icon['url']);
-					} else {
-						echo get_template_directory_uri() . '/assets/img/section-img.png';
-					}
-
-					?>" alt="">
-
-					<?php
-					if ($dsmb_features_desc):
-						?>
-						<p><?php echo esc_html($dsmb_features_desc); ?></p>
-						<?php
-					else:
-						?>
-						<p>Dedicated to providing consistent support and care for you and your family's well-being and
-							needs.</p>
-						<?php
-					endif;
-					?>
-
+					<h2><?php echo $dsmb_features_title ? esc_html($dsmb_features_title) : esc_html('We Are Always Ready to Help You & Your Family'); ?></h2>
+					<img src="<?php echo $dsmb_features_icon['url'] ? esc_url($dsmb_features_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>" alt="<?php echo $dsmb_features_icon ? esc_attr($dsmb_features_icon['title']) : '' ?>">
+					<p><?php echo $dsmb_features_desc ? esc_html($dsmb_features_desc) : esc_html('Dedicated to providing consistent support and care for you and your family\'s well-being and needs.'); ?></p>
 				</div>
 			</div>
 		</div>
@@ -64,23 +32,9 @@
 					<div class="col-lg-4 col-12">
 
 						<!-- Start Single features -->
-						<div class="single-features
-								<?php
-								if ($dsmb_features->current_post + 1 === $dsmb_features->post_count) {
-									echo 'last';
-								}
-								?>
-								">
+						<div class="single-features <?php echo $dsmb_features->current_post + 1 === $dsmb_features->post_count ? esc_attr('last') : ''; ?> ">
 							<div class="signle-icon">
-								<i class="
-											<?php
-											if ($feature_icon) {
-												echo esc_attr($feature_icon);
-											} else {
-												echo 'icofont icofont-ambulance-cross';
-											}
-											?>
-										">
+								<i class="<?php echo $feature_icon ? esc_attr($feature_icon) : esc_attr('icofont icofont-ambulance-cross'); ?> ">
 								</i>
 							</div>
 							<h3><?php the_title(); ?></h3>
@@ -92,42 +46,7 @@
 				endwhile;
 				wp_reset_postdata();
 			else:
-				?>
-				<div class="col-lg-4 col-12">
-
-					<!-- Start Single features -->
-					<div class="single-features">
-						<div class="signle-icon">
-							<i class="icofont icofont-ambulance-cross"></i>
-						</div>
-						<h3>Emergency Help</h3>
-						<p>Immediate, reliable support for emergencies, prioritizing your safety and well-being, available 24/7.</p>
-					</div>
-					<!-- End Single features -->
-				</div>
-				<div class="col-lg-4 col-12">
-					<!-- Start Single features -->
-					<div class="single-features">
-						<div class="signle-icon">
-							<i class="icofont icofont-medical-sign-alt"></i>
-						</div>
-						<h3>Enriched Pharmecy</h3>
-						<p>Reliable pharmacy offering quality medications, health products, and expert guidance for your well-being.</p>
-					</div>
-					<!-- End Single features -->
-				</div>
-				<div class="col-lg-4 col-12">
-					<!-- Start Single features -->
-					<div class="single-features last">
-						<div class="signle-icon">
-							<i class="icofont icofont-stethoscope"></i>
-						</div>
-						<h3>Medical Treatment</h3>
-						<p>Comprehensive medical care tailored to your needs, focusing on personalized treatments and optimal health outcomes.</p>
-					</div>
-					<!-- End Single features -->
-				</div>
-				<?php
+				printf( "<h4 class='text-center text-dark'>%s</h4>", esc_html('No Features found! Please create Features'));
 			endif;
 			?>
 		</div>

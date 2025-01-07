@@ -25,6 +25,17 @@ require_once get_theme_file_path('inc/Fun-facts/funfacts-cpt.php');
 //Add Schedule custom fields
 require_once get_theme_file_path('inc/Fun-facts/funfacts_custom-fields.php');
 
+//Register custom post type Portfolio
+require_once get_theme_file_path('inc/Portfolio/portfolio-cpt.php');
+//Add Portfolio custom fields
+// require_once get_theme_file_path('inc/Portfolio/portfolio_custom-fields.php');
+
+
+//Register custom post type Services
+require_once get_theme_file_path('inc/Services/servides-cpt.php');
+//Add Portfolio custom fields
+require_once get_theme_file_path('inc/Services/services_custom-fields.php');
+
 
 
 
@@ -44,7 +55,7 @@ if (!function_exists('dsmb_theme_setup_and_support')) {
     {
         load_theme_textdomain('dsmb');
         add_theme_support('title-tag');
-        add_theme_support('post-thumbnails', ['post', 'slider']);
+        add_theme_support('post-thumbnails', ['post', 'slider', 'portfolio']);
         add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption']);
         add_theme_support('post-formats', ['aside', 'image', 'video', 'quote', 'link', 'gallery', 'audio']);
 
