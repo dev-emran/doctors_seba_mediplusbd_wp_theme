@@ -37,6 +37,9 @@ require_once get_theme_file_path('inc/Services/servides-cpt.php');
 require_once get_theme_file_path('inc/Services/services_custom-fields.php');
 
 
+//customize API
+require_once get_theme_file_path('inc/Customizer/mediplus_theme_customizer.php');
+
 
 
 
@@ -211,7 +214,7 @@ if (!function_exists('dsmb_enqueue_scripts')) {
         wp_enqueue_script('dsmb-waypoints', '//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js', [], $version, true);
         //Bootstrap JS
         wp_enqueue_script('dsmb-bootstrap-js', get_theme_file_uri('assets/js/bootstrap.min.js'), [], $version, true);
-        //Bootstrap JS
+        //main JS
         wp_enqueue_script('dsmb-main-js', get_theme_file_uri('assets/js/main.js'), ['dsmb-jquery'], $version, true);
     }
 }

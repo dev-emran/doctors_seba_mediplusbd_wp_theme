@@ -11,7 +11,13 @@
 				<div class="section-title">
 					<h2><?php echo $dsmb_features_title ? esc_html($dsmb_features_title) : esc_html('We Are Always Ready to Help You & Your Family'); ?></h2>
 					<img src="<?php echo $dsmb_features_icon['url'] ? esc_url($dsmb_features_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>" alt="<?php echo $dsmb_features_icon ? esc_attr($dsmb_features_icon['title']) : '' ?>">
+					<?php 
+						if(get_theme_mod('features_desc_displayed_setting', 1)):
+					?>
 					<p><?php echo $dsmb_features_desc ? esc_html($dsmb_features_desc) : esc_html('Dedicated to providing consistent support and care for you and your family\'s well-being and needs.'); ?></p>
+					<?php 
+						endif;
+					?>
 				</div>
 			</div>
 		</div>

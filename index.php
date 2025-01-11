@@ -50,6 +50,10 @@
 			<?php get_template_part('template-parts/Homepage/Appointment'); ?>
 		<!-- End Appointment -->
 
+		<!-- Start Appointment -->
+			<?php get_template_part('template-parts/Homepage/jj'); ?>
+		<!-- End Appointment -->
+
 		<!-- Start Newsletter Area -->
 			<?php get_template_part('template-parts/Homepage/Newsletter'); ?>
 		<!-- /End Newsletter Area -->
