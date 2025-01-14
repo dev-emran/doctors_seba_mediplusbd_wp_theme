@@ -4,7 +4,7 @@
 	$clients = $dsmb_options['client_info'];
 ?>
 
-<div class="clients overlay" style="background-image:url(<?php echo $client_bg_image['url'] ? esc_url($client_bg_image['url']) : esc_url(get_theme_file_uri('assets/img/client-bg.jpg')); ?>);">
+<div class="clients overlay" style="background-image:url(<?php echo $client_bg_image ? esc_url($client_bg_image['url']) : esc_url(get_theme_file_uri('assets/img/client-bg.jpg')); ?>);">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-12">

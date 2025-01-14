@@ -22,8 +22,8 @@
 				<div class="section-title">
 					<h2><?php echo $who_main_title ? esc_html($who_main_title) : esc_html("We Offer Different Services To Improve Your Health"); ?>
 					</h2>
-					<img src="<?php echo $who_top_icon_url['url'] ? esc_url($who_top_icon_url['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png') ?>"
-						alt="<?php echo esc_attr($who_top_icon_url['title']) ?>">
+					<img src="<?php echo $who_top_icon_url ? esc_url($who_top_icon_url['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png') ?>"
+						alt="<?php echo $who_top_icon_url ? esc_attr($who_top_icon_url['title']) : '' ?>">
 					<p><?php echo $who_short_desc ? esc_html($who_short_desc) : esc_html("We offer diverse health services tailored to enhance your physical, mental, and emotional well-being for a healthier lifestyle."); ?>
 					</p>
 				</div>
@@ -41,7 +41,7 @@
 						<div class="col-lg-6">
 							<ul class="list">
 								<?php
-								if (count($who_left_items) > 0):
+								if (!empty($who_left_items)):
 									foreach ($who_left_items as $item):
 										?>
 										<li><i
@@ -60,7 +60,7 @@
 						<div class="col-lg-6">
 							<ul class="list">
 								<?php
-								if (count($who_right_items) > 0):
+								if (!empty($who_right_items)):
 									foreach ($who_right_items as $item):
 										?>
 										<li><i
@@ -83,7 +83,7 @@
 			<div class="col-lg-6 col-12">
 				<!-- Start Choose Rights -->
 				<div class="choose-right"
-					style="background-image:url(<?php echo $who_video_bg_image_url['url'] ? esc_url($who_video_bg_image_url['url']) :  esc_url(get_theme_file_uri('/assets/img/video-bg.jpg')) ?>);">
+					style="background-image:url(<?php echo $who_video_bg_image_url ? esc_url($who_video_bg_image_url['url']) :  esc_url(get_theme_file_uri('/assets/img/video-bg.jpg')) ?>);">
 					<div class="video-image">
 						<!-- Video Animation -->
 						<div class="promo-video">

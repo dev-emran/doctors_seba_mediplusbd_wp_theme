@@ -10,7 +10,7 @@
 		<div class="col-lg-12">
 				<div class="section-title">
 					<h2><?php echo $dsmb_features_title ? esc_html($dsmb_features_title) : esc_html('We Are Always Ready to Help You & Your Family'); ?></h2>
-					<img src="<?php echo $dsmb_features_icon['url'] ? esc_url($dsmb_features_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>" alt="<?php echo $dsmb_features_icon ? esc_attr($dsmb_features_icon['title']) : '' ?>">
+					<img src="<?php echo $dsmb_features_icon ? esc_url($dsmb_features_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>" alt="<?php echo $dsmb_features_icon ? esc_attr($dsmb_features_icon['title']) : '' ?>">
 					<?php 
 						if(get_theme_mod('features_desc_displayed_setting', 1)):
 					?>
@@ -44,7 +44,7 @@
 								</i>
 							</div>
 							<h3><?php the_title(); ?></h3>
-							<?php the_content(); ?>
+							<?php echo get_custom_excerpt(15); ?>
 						</div>
 						<!-- End Single features -->
 					</div>

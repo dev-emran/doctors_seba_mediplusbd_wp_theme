@@ -12,7 +12,7 @@
 	$cta_bg = $dsmb_get_options['cta_section_bg'];
 
 	?>
-<section style="background-image:url(<?php echo $cta_bg['url'] ? esc_url($cta_bg['url']) : esc_url(get_theme_file_uri('assets/img/call-bg.jpg')); ?>)" class="call-action overlay" data-stellar-background-ratio="0.5">
+<section style="background-image:url(<?php echo $cta_bg ? esc_url($cta_bg['url']) : esc_url(get_theme_file_uri('assets/img/call-bg.jpg')); ?>)" class="call-action overlay" data-stellar-background-ratio="0.5">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-12">

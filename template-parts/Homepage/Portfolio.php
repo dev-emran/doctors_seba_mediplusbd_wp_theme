@@ -10,7 +10,7 @@
 			<div class="col-lg-12">
 				<div class="section-title">
 					<h2><?php echo $dsmb_portfolio_title ? esc_html($dsmb_portfolio_title) : esc_html('We Maintain Cleanliness Rules Inside Our Hospital'); ?></h2>
-					<img src="<?php echo $dsmb_icon['url'] ? esc_url($dsmb_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>" alt="<?php echo $dsmb_icon ? esc_attr($dsmb_icon['title']) : '' ?>">
+					<img src="<?php echo $dsmb_icon ? esc_url($dsmb_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>" alt="<?php echo $dsmb_icon ? esc_attr($dsmb_icon['title']) : '' ?>">
 					<p><?php echo $dsmb_portfolio_desc ? esc_html($dsmb_portfolio_desc) : esc_html('We Maintain Cleanliness Rules Inside Our Hospital'); ?></p>
 				</div>
 			</div>

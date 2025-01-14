@@ -18,3 +18,97 @@
 
 */
 
+
+/* 
+    blog single page
+*/
+
+body {
+    background-color: #f8f9fa;
+}
+
+.blog-header {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.author-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.post-meta {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.share-buttons {
+    margin: 30px 0;
+}
+
+.share-buttons a {
+    margin-right: 15px;
+    color: #6c757d;
+    transition: color 0.3s;
+}
+
+.share-buttons a:hover {
+    color: #0d6efd;
+}
+
+.sidebar-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tag-cloud a {
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 4px;
+    background: #e9ecef;
+    border-radius: 20px;
+    color: #495057;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.tag-cloud a:hover {
+    background: #dee2e6;
+}
+
+.recent-post {
+    padding: 10px 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.recent-post:last-child {
+    border-bottom: none;
+}
+
+.comment-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}

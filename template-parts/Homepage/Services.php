@@ -11,7 +11,7 @@ $dsmb_services_icon = $dsmb_options['services_icon'];
 				<div class="section-title">
 					<h2><?php echo $dsmb_services_title ? esc_html($dsmb_services_title) : esc_html('We Offer Different Services To Improve Your Health'); ?>
 					</h2>
-					<img src="<?php echo $dsmb_services_icon['url'] ? esc_url($dsmb_services_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>"
+					<img src="<?php echo $dsmb_services_icon ? esc_url($dsmb_services_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>"
 						alt="<?php echo $dsmb_services_icon ? esc_attr($dsmb_services_icon['title']) : '' ?>">
 					<p><?php echo $dsmb_services_desc ? esc_html($dsmb_services_desc) : esc_html('Our commitment to your well-being drives us to offer a variety of services designed to enhance your health'); ?>
 					</p>

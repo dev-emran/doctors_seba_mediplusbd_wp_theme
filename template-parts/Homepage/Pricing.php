@@ -11,7 +11,7 @@
 				<div class="section-title">
 					<h2><?php echo $dsmb_price_title ? esc_html($dsmb_price_title) : esc_html('We Provide You The Best Treatment In Resonable Price'); ?>
 					</h2>
-					<img src="<?php echo $dsmb_price_icon['url'] ? esc_url($dsmb_price_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>"
+					<img src="<?php echo $dsmb_price_icon ? esc_url($dsmb_price_icon['url']) : esc_url(get_template_directory_uri() . '/assets/img/section-img.png'); ?>"
 						alt="<?php echo $dsmb_price_icon ? esc_attr($dsmb_price_icon['title']) : '' ?>">
 					<p><?php echo $dsmb_price_desc ? esc_html($dsmb_price_desc) : esc_html('Quality healthcare should be accessible to everyone, which is why we are committed to offering the best treatment at reasonable prices.'); ?>
 					</p>
@@ -21,7 +21,7 @@
 		<div class="row">
 			<?php 
 				$price_tables = $dsmb_options['pricing_table'];
-				if(count($price_tables) > 0 ):
+				if(!empty($price_tables)):
 					foreach($price_tables as $item):
 			?>
 			<!-- Single Table -->

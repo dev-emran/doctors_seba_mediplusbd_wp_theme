@@ -55,7 +55,7 @@
 							?>
 							<!-- Start Logo -->
 							<div class="logo">
-								<a href="<?php site_url(); ?>"><img src="<?php echo $site_logo['url'] ? esc_url($site_logo['url']) : esc_url(get_template_directory_uri() . '/assets/img/logo.png') ?>" alt="<?php echo $site_logo['title'] ? esc_url($site_logo['title']) : '' ?>"></a>
+								<a href="<?php echo site_url(); ?>"><img src="<?php echo $site_logo ? esc_url($site_logo['url']) : esc_url(get_template_directory_uri() . '/assets/img/logo.png') ?>" alt="<?php echo $site_logo ? esc_url($site_logo['title']) : '' ?>"></a>
 							</div>
 							<!-- End Logo -->
 							<!-- Mobile Nav -->
