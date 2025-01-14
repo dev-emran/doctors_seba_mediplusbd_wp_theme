@@ -26,7 +26,8 @@
 								<div class="text">
 									<?php 
 										$title = get_the_title();
-										$title_patrs = explode(' ', $title, 6);
+										$limit = count(explode(' ', $title));
+										$title_patrs = explode(' ', $title, $limit);
 									?>
 									<h1><?php esc_html( printf("%s <span>%s</span> %s <span>%s</span> %s",$title_patrs[0], $title_patrs[1],$title_patrs[2],$title_patrs[3], $title_patrs[5] ) ); ?></h1>
 									<?php the_content(); ?>
