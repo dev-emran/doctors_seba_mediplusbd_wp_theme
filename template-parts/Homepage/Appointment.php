@@ -11,6 +11,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-6 col-md-12 col-12">
+						<?php //echo do_shortcode('[contact-form-7 id="0faeed0" title="Appointment form"]'); ?>
 						<form class="form" action="#">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-12">
@@ -85,4 +86,5 @@
 					</div>
 				</div>
 			</div>
+			
 		</section>

@@ -13,12 +13,10 @@ require_once get_theme_file_path('inc/Schedule-CPT/schedule-cpt.php');
 //Add Schedule custom fields
 require_once get_theme_file_path('inc/Schedule-CPT/schedule_custom-fields.php');
 
-
 //Register custom post type Features
 require_once get_theme_file_path('inc/Features/features-cpt.php');
 //Add Schedule custom fields
 require_once get_theme_file_path('inc/Features/features_custom-fields.php');
-
 
 //Register custom post type Features
 require_once get_theme_file_path('inc/Fun-facts/funfacts-cpt.php');
@@ -30,18 +28,13 @@ require_once get_theme_file_path('inc/Portfolio/portfolio-cpt.php');
 //Add Portfolio custom fields
 // require_once get_theme_file_path('inc/Portfolio/portfolio_custom-fields.php');
 
-
 //Register custom post type Services
 require_once get_theme_file_path('inc/Services/servides-cpt.php');
 //Add Portfolio custom fields
 require_once get_theme_file_path('inc/Services/services_custom-fields.php');
 
-
 //customize API
 require_once get_theme_file_path('inc/Customizer/mediplus_theme_customizer.php');
-
-
-
 
 //Included cmb2 library
 require_once get_theme_file_path('lib/CMB2/init.php');
@@ -53,7 +46,7 @@ require_once get_theme_file_path('inc/Codestar/theme-options.php');
 /* This block of code in PHP is defining a function `dsmb_theme_setup_and_support` that sets up various
 theme supports for a WordPress theme. */
 
-if (!function_exists('dsmb_theme_setup_and_support')) {
+if (! function_exists('dsmb_theme_setup_and_support')) {
     function dsmb_theme_setup_and_support()
     {
         load_theme_textdomain('dsmb');
@@ -73,7 +66,7 @@ if (!function_exists('dsmb_theme_setup_and_support')) {
 add_action('after_setup_theme', 'dsmb_theme_setup_and_support');
 
 //nav menu submenu
-if (!function_exists('dsmb_nav_submenu_css_class')) {
+if (! function_exists('dsmb_nav_submenu_css_class')) {
     function dsmb_nav_submenu_css_class($classes, $args, $depth)
     {
         if ($args->theme_location = 'nav_menu') {
@@ -87,7 +80,7 @@ if (!function_exists('dsmb_nav_submenu_css_class')) {
 add_filter('nav_menu_submenu_css_class', 'dsmb_nav_submenu_css_class', 10, 3);
 
 //nav sub menu icon fixed
-if (!function_exists('dsmb_sub_menu_icon')) {
+if (! function_exists('dsmb_sub_menu_icon')) {
     function dsmb_sub_menu_icon($items, $args)
     {
         foreach ($items as $item) {
@@ -102,7 +95,7 @@ if (!function_exists('dsmb_sub_menu_icon')) {
 add_filter('wp_nav_menu_objects', 'dsmb_sub_menu_icon', 10, 2);
 
 //nav menu active class fixed
-if (!function_exists('dsmb_nav_menu_active_calss')) {
+if (! function_exists('dsmb_nav_menu_active_calss')) {
 
     function dsmb_nav_menu_active_calss($classes, $item, $args, $depth)
     {
@@ -128,7 +121,7 @@ add_filter('nav_menu_css_class', 'dsmb_nav_menu_active_calss', 10, 4);
 The below PHP code is defining a function `dsmb_enqueue_scripts` that is responsible for enqueueing
 various stylesheets and scripts in a WordPress theme.
  */
-if (!function_exists('dsmb_enqueue_scripts')) {
+if (! function_exists('dsmb_enqueue_scripts')) {
     function dsmb_enqueue_scripts()
     {
         // $version = wp_get_theme()->get('Version');
@@ -167,7 +160,7 @@ if (!function_exists('dsmb_enqueue_scripts')) {
         wp_enqueue_style('dsmb-style', get_theme_file_uri('assets/style.css'), [], $version, 'all');
 
         //Responsive CSS
-        wp_enqueue_style('dsmb-responsive', get_theme_file_uri('assets/css/responsive.cs'), [], $version, 'all');
+        wp_enqueue_style('dsmb-responsive', get_theme_file_uri('assets/css/responsive.css'), [], $version, 'all');
 
         //Theme main style
         wp_enqueue_style('dsmb-main', get_stylesheet_uri());
@@ -227,18 +220,95 @@ add_action('wp_enqueue_scripts', 'dsmb_enqueue_scripts');
 The code block you provided is defining a function `dsmb_admin_enqueque` that is responsible for
 enqueueing stylesheets and scripts specifically for the WordPress admin area.
  */
-if (!function_exists('dsmb_admin_enqueque')) {
+if (! function_exists('dsmb_admin_enqueque')) {
     function dsmb_admin_enqueque()
     {
         $version = wp_get_theme()->get('Version');
+        
         //css enqueue
         wp_enqueue_style('dsmb-admin-css', get_theme_file_uri('assets/Admin/css/dsmb_admin.css'), [], time(), 'all');
 
         //js enqueue
-        wp_enqueue_script('dsmb-admin-js', get_theme_file_uri('assets/Admin/js/dsmb_admin.js'), [], time(), true);
+        //wp_register_script('dsmb-admin-js', get_theme_file_uri('assets/Admin/js/dsmb_admin.js'), [], time(), true);
+        wp_enqueue_script('dsmb-admin-js', get_theme_file_uri('assets/Admin/js/dsmb_admin.js'), ['jquery'], time(), true);
 
     }
 
 }
 
 add_action('admin_enqueue_scripts', 'dsmb_admin_enqueque');
+
+//enqueque widgets scripts
+/* The PHP code is defining a function `dsmb_widgets_scripts` that is hooked into the
+`admin_enqueue_scripts` action. This function checks if the current admin page is 'widgets.php', and
+if so, it enqueues the WordPress media library and a custom JavaScript file named 'widgets.js'
+located in the theme's 'assets/Admin/js' directory. The JavaScript file is enqueued with a
+dependency on jQuery and a version parameter set to `time()` to ensure it is not cached. */
+if (! function_exists('dsmb_widgets_scripts')) {
+    function dsmb_widgets_scripts($hook)
+    {
+        if ('widgets.php' === $hook) {
+            wp_enqueue_media();
+            wp_enqueue_script('dsmb-widgets-js', get_theme_file_uri('assets/Admin/js/widgets.js'), ['jquery'], time(), true);
+        }
+    }
+}
+add_action('admin_enqueue_scripts', 'dsmb_widgets_scripts');
+
+
+
+//dsmb widgets
+require_once get_theme_file_path('inc/widgets/dsmb-widgets.php');
+
+//dsmb social icon widgets
+require_once get_theme_file_path('inc/widgets/social-icon-widget.php');
+
+
+
+if (! function_exists('dsmb_widgets_register')) {
+    function dsmb_widgets_register()
+    {
+        register_sidebar([
+            'name'          => __('Footer Left', 'dsmb'),
+            'id'            => 'dsmb-footer-left',
+            'description'   => __('Footer sidebar that appears on the left.', 'dsmb'),
+            'before_widget' => '<div id="%1$s" class="%2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>',
+        ]);
+
+        register_sidebar([
+            'name'          => __('Footer Right', 'dsmb'),
+            'id'            => 'dsmb-footer-right',
+            'description'   => __('Footer sidebar that appears on the right.', 'dsmb'),
+            'before_widget' => '<div id="%1$s" class="%2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>',
+        ]);
+
+        register_sidebar([
+            'name'          => __('Footer Open Hours', 'dsmb'),
+            'id'            => 'dsmb-footer-right_open_hours',
+            'description'   => __('Footer sidebar that appears on the right open hour section.', 'dsmb'),
+            'before_widget' => '<div id="%1$s" class="%2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>',
+        ]);
+
+        register_sidebar([
+            'name'          => __('Footer Quick Links Head', 'dsmb'),
+            'id'            => 'dsmb-footer-right_quick_links_head',
+            'description'   => __('Footer sidebar that appears on the right open hour section.', 'dsmb'),
+            'before_widget' => '<div id="%1$s" class="%2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>',
+        ]);
+
+        register_widget('Widgets_dsmb');
+    }
+}
+add_action('widgets_init', 'dsmb_widgets_register');
